@@ -4,7 +4,7 @@ John Conway's  Game of Life
 
 ## example
 
-```
+```go
 package main
 
 import(
