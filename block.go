@@ -47,16 +47,16 @@ func (b *block) String() string {
 
 
 //move to next status of matrix
-func (b *block) next() {
+func (b *block) Next() {
 	for i:= 0 ; i < len(b.m); i++ {
 		for j:=0; j < len(b.m[i]); j++ {
-			b.update(i,j)
+			b.Update(i,j)
 		}
 	}
 }
 
 //update status of a pixel in matrix
-func (b *block) update(x, y int) {
+func (b *block) Update(x, y int) {
 	count := b.countAround(x, y)
 	if count == 2 {
 		return

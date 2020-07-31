@@ -38,7 +38,7 @@ func NewBoard(b *block, unit int) *board {
 	return &br
 }
 
-//fill a block area of board with a color 
+//Fill a block area of board with a color 
 func (b *board) setBlock( x, y int, colour color.Color) {
 	length := b.unit
 	for i:=x*length; i<(x+1)*length; i++ {
@@ -61,14 +61,14 @@ func (b *board) visualize() {
 	} 
 }
 
-//update the board to next frame 
-func (b *board) update() {
-	b.b.next()
+//Update the board to next frame 
+func (b *board) Update() {
+	b.b.Next()
 	b.visualize()
 }
 
-//write board to a image file
-func (b *board) writeImg(name string) {
+//Write board to a image file
+func (b *board) WriteImg(name string) {
 	image := b.SubImage(image.Rect(0, 0, b.Bounds().Dx(), b.Bounds().Dy()))
 	out, err := os.Create(name)
 	defer out.Close()
@@ -80,14 +80,14 @@ func (b *board) writeImg(name string) {
 	jpeg.Encode(out, image, op)
 }
 
-//board transitions for n times
-func (b *board) transition(n int) {
+//Board transitions for n times
+func (b *board) Transition(n int) {
 	if n > MaxTransitions { 
 		n = MaxTransitions
 	}
 	for i := 0; i < n; i++ {
-		b.writeImg(Framename + strconv.Itoa(i) + Ext)
-		b.update()
+		b.WriteImg(Framename + strconv.Itoa(i) + Ext)
+		b.Update()
 		fmt.Println(b.b)
 	}
 } 

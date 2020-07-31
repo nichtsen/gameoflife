@@ -1,7 +1,7 @@
 package main
 
 import(
-	"github.com/nichtsen/gameoflife"
+	gl "github.com/nichtsen/gameoflife" 
 )
 
 func main() {
@@ -9,7 +9,7 @@ func main() {
 	//and block length by pixels
 	width, len, unit := 5, 5, 100
 	//1 for alive 0 for dead
-	b, err := newBlock(
+	b, err := gl.NewBlock(
 		width,
 		len,
 		[]byte{
@@ -22,9 +22,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	br := newBoard(&b, unit)
+	br := gl.NewBoard(&b, unit)
 	// transition for 10 times
-	br.transition(10)
+	br.Transition(10)
 }
 
 
