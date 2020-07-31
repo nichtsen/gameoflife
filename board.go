@@ -71,10 +71,10 @@ func (b *board) Update() {
 func (b *board) WriteImg(name string) {
 	image := b.SubImage(image.Rect(0, 0, b.Bounds().Dx(), b.Bounds().Dy()))
 	out, err := os.Create(name)
-	defer out.Close()
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
+	defer out.Close()
 	op := new(jpeg.Options)
 	op.Quality = 50
 	jpeg.Encode(out, image, op)
