@@ -1,4 +1,4 @@
-package existenz
+package gameoflife
 
 import (
 	"image"
