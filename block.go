@@ -32,8 +32,8 @@ func NewBlock(m, n int, s []byte) (block, error) {
 			count ++ 
 		}
 	}
-	b.x = m
-	b.y = n
+	b.x = n
+	b.y = m
 	return b, nil
 }
 

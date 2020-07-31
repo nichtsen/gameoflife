@@ -50,12 +50,12 @@ func (b *board) setBlock( x, y int, colour color.Color) {
 
 //visualize current status matrix  
 func (b *board) visualize() {
-	for w :=0; w < b.b.x; w++ {
-		for l :=0; l < b.b.y; l++ {
+	for w :=0; w < b.b.y; w++ {
+		for l :=0; l < b.b.x; l++ {
 			if b.b.m[w][l] == 1 {
-				b.setBlock(w, l, pixel_alive)
+				b.setBlock(l, w, pixel_alive)
 			} else {
-				b.setBlock(w, l, pixel_dead)
+				b.setBlock(l, w, pixel_dead)
 			}
 		}
 	} 
