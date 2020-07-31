@@ -27,7 +27,7 @@ type board struct {
 	unit int
 }
 
-func newBoard(b *block, unit int) *board {
+func NewBoard(b *block, unit int) *board {
 	rect := image.Rect(0, 0, b.x * unit, b.y * unit)
 	br := board{
 		*image.NewRGBA(rect), 

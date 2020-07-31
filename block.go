@@ -13,7 +13,7 @@ type block struct {
 
 //returm a block with matrix and initialize it
 //TODO 4 bit a byte
-func newBlock(m, n int, s []byte) (block, error) {
+func NewBlock(m, n int, s []byte) (block, error) {
 	size := m * n
 	if size != len(s) {
 		return block{}, errors.New("invalid length!")
