@@ -21,15 +21,15 @@ var (
 	pixel_dead  = color.RGBA{0, 0, 0, 0xff}
 )
 
-//Board can visualize its underlying block
+//Board can visualize its underlying Block
 type Board struct {
 	image.RGBA
-	b    *block
+	b    *Block
 	unit int
 }
 
-//NewBoard return a new Board for visualizing its underlying block
-func NewBoard(b *block, unit int) *Board {
+//NewBoard return a new Board for visualizing its underlying Block
+func NewBoard(b *Block, unit int) *Board {
 	rect := image.Rect(0, 0, b.x*unit, b.y*unit)
 	br := Board{
 		*image.NewRGBA(rect),
@@ -40,7 +40,7 @@ func NewBoard(b *block, unit int) *Board {
 	return &br
 }
 
-//Fill a block area of Board with a color
+//Fill a Block area of Board with a color
 func (b *Board) setBlock(x, y int, colour color.Color) {
 	length := b.unit
 	for i := x * length; i < (x+1)*length; i++ {
@@ -69,7 +69,7 @@ func (b *Board) Update() {
 	b.visualize()
 }
 
-//WriteIma writes the Board to a image file
+//WriteImg writes the Board to a image file
 func (b *Board) WriteImg(name string) {
 	image := b.SubImage(image.Rect(0, 0, b.Bounds().Dx(), b.Bounds().Dy()))
 	out, err := os.Create(name)
@@ -82,7 +82,7 @@ func (b *Board) WriteImg(name string) {
 	jpeg.Encode(out, image, op)
 }
 
-//Transitions for n times
+//Transition for n times
 func (b *Board) Transition(n int) {
 	if n > MaxTransitions {
 		n = MaxTransitions
