@@ -1,23 +1,23 @@
 package main
 
-import(
-	gl "github.com/nichtsen/gameoflife" 
+import (
+	gl "github.com/nichtsen/gameoflife"
 )
 
 func main() {
-	//board length, width,
+	//board width, height
 	//and block length by pixels
-	width, len, unit := 5, 5, 100
+	width, height, unit := 5, 5, 100
 	//1 for alive 0 for dead
 	b, err := gl.NewBlock(
 		width,
-		len,
+		height,
 		[]byte{
-		0,1,0,0,1,
-		0,1,1,1,0,
-		0,1,1,0,0,
-		0,1,0,0,0,
-		1,0,0,1,0},
+			0, 1, 0, 0, 1,
+			0, 1, 1, 1, 0,
+			0, 1, 1, 0, 0,
+			0, 1, 0, 0, 0,
+			1, 0, 0, 1, 0},
 	)
 	if err != nil {
 		panic(err)
@@ -26,5 +26,3 @@ func main() {
 	// transition for 10 times
 	br.Transition(10)
 }
-
-
